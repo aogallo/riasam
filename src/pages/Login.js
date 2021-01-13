@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form } from "semantic-ui-react";
 
 import { useForm } from "../util/hooks";
+import { auth } from "../util/init-firebase";
 
 function Login() {
 
@@ -14,8 +15,17 @@ function Login() {
         });
 
     function loginUserCallback () {
+        authentication({...values});
+    }
 
-        console.warn('gallo', values);
+    function authentication({username, password}) {
+        auth.signInWithEmailAndPassword(username, password)
+            .then( (user) => {
+                console.log(user)
+            })
+            .catch( (error) => {
+                console.error(error);
+            });
     }
 
     

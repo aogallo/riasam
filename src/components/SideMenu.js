@@ -1,6 +1,7 @@
 import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
-const SidebarExampleVisible = () => (
+import { Icon, Image, Menu, Sidebar } from 'semantic-ui-react'
+
+const SideMenu = () => (
     <Sidebar
       as={Menu}
       icon='labeled'
@@ -29,4 +30,4 @@ const SidebarExampleVisible = () => (
 )
 
 
-export default SidebarExampleVisible;
+export default SideMenu;

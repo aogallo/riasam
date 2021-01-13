@@ -9,9 +9,12 @@
     "@testing-library/user-event": "^12.6.0",
     "firebase": "^8.2.1",
     "firebase-tools": "^9.1.0",
+    "pdfmake": "^0.1.69",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-semantic-ui-datepickers": "^2.12.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "web-vitals": "^0.2.4"
