@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Form, Button, Message } from "semantic-ui-react";
 
 
-import { useUsuario } from "../context/auth";
 import { useForm } from "../util/hooks";
 
 function Concept({isDiscount, addConcept,data}) {
@@ -12,7 +11,6 @@ function Concept({isDiscount, addConcept,data}) {
         header: '',
         error: false
     })
-    const { user } = useUsuario();
 
     const { onChange, onSubmit, values } = useForm(AddConcepts,
         {

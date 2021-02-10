@@ -6,25 +6,23 @@ import 'semantic-ui-css/semantic.min.css'
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import './App.css';
 
-import { AuthProvider } from "./context/auth";
-import AuthRoute from "./util/AuthRoute";
-
 // import SideMenu from './components/SideMenu'
 import Login from './pages/Login';
 import Home from "./pages/Home";
+import { UserProvider } from "./context/userContext";
+import AuthRoute from "./util/AuthRoute";
 
 function App() {
   return (
-    <AuthProvider>
+    <UserProvider>
       <Router>
         <Container style={{ marginTop: 20 }}>
           {/* <SideMenu /> */}
-          <Route exact path="/" component={Home} />
-          <AuthRoute exact path="/login" component={Login} />
+          <AuthRoute exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
         </Container>
       </Router>
-    </AuthProvider>
-
+    </UserProvider>
   );
 }
 

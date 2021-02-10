@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 
 import { useForm } from "../util/hooks";
-import { auth } from "../util/init-firebase";
+import { UseUser } from "../context/userContext";
 
-function Login() {
-
-    const [errors, setErrors] = useState({});
+function Login(props) {
+    const { user, authentication } = UseUser();
+    const [errors, setErrors] = useState();
 
     const { onChange, onSubmit, values } = useForm(loginUserCallback,
         {
@@ -16,27 +16,21 @@ function Login() {
 
     function loginUserCallback () {
         authentication({...values});
+        if (user){
+            props.history.push('/');
+        }else{
+            setErrors('Usuario o contraseña invalida');
+        }
     }
 
-    function authentication({username, password}) {
-        auth.signInWithEmailAndPassword(username, password)
-            .then( (user) => {
-                console.log(user)
-            })
-            .catch( (error) => {
-                console.error(error);
-            });
-    }
-
-    
     return (
         <div className="form-container">
-            <Form onSubmit={onSubmit} 
+            <Form onSubmit={onSubmit}
                 noValidate
                 >
                     <h1>Iniciar Sesion</h1>
-                    <Form.Input 
-                    
+                    <Form.Input
+
                         label="Correo"
                         placeholder="Correo..."
                         name="username"
@@ -57,7 +51,10 @@ function Login() {
                     <Button type="submit" primary>
                         Iniciar Sesion
                     </Button>
-            </Form>            
+            </Form>
+            {
+                errors && <Message negative > <p>{errors}</p></Message>
+            }
         </div>
     )
 }

@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 import { Route, Redirect } from "react-router-dom";
 
-import { useUsuario } from "../context/auth";
+import { UseUser } from "../context/userContext";
 
 function AuthRoute({ component: Component, ...rest}) {
-    const { user } = useUsuario();
+    const { user } = UseUser();
+
+    console.log('user', user);
 
     return (
         <Route
             { ...rest }
             render ={ (props) =>
-                user ? <Redirect to="/login" /> : <Component {...props} />
+                user ? <Component {...props}/> : <Redirect to="/login" />
             }
         />
     )

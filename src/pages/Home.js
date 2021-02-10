@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useUsuario } from "../context/auth";
+
 import { Form, Grid, Button } from "semantic-ui-react";
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import pdfMake from "pdfmake/build/pdfmake";
@@ -12,7 +12,6 @@ import { firestore } from "../util/init-firebase";
 function Home() {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-    const { user } = useUsuario();
     const [incomes, setIncomes] = useState([]);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -263,7 +262,7 @@ function Home() {
 
         switch (type) {
             case 'DISCOUNT':
-                    if (index != -1){
+                    if (index !== -1){
                         data = [...discounts];
                         data[index] = {
                             ...data[index],
@@ -277,7 +276,7 @@ function Home() {
                 break;
             case 'INCOME':
 
-                    if (index != -1){
+                    if (index !== -1){
                         data = [ ...incomes ];
                         data[index] = {
                             ...data[index],
